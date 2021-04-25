@@ -16,19 +16,19 @@ export default {
   name: 'OlderNewer',
   setup() {
     return {
-      async getNewer() {
+      async getNewer(url) {
         try {
           if (AppState.newer !== null) {
-            await postsService.getNewerPosts()
+            await postsService.getNewerPosts(url)
           }
         } catch (error) {
           Notification.toast('Error: ' + error, 'error')
         }
       },
-      async getOlder() {
+      async getOlder(url) {
         try {
           if (AppState.older !== null) {
-            await postsService.getOlderPosts()
+            await postsService.getOlderPosts(url)
           }
         } catch (error) {
           Notification.toast('Error: ' + error, 'error')

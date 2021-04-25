@@ -9,5 +9,6 @@ export const AppState = reactive({
   posts: [],
   activeProfile: null,
   newer: null,
-  older: null
+  older: null,
+  features: []
 })

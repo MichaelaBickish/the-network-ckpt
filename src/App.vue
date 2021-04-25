@@ -7,10 +7,9 @@
       <div class="col-md-3">
         <SideProfile />
       </div>
-      <div class="col-md-6">
+      <div class="col-md-9">
         <router-view />
       </div>
-      <div class="col-md-3"></div>
     </div>
   </main>
   <footer>
