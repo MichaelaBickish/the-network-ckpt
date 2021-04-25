@@ -3,11 +3,19 @@
     <Navbar />
   </header>
   <main>
-    <router-view />
+    <div class="row">
+      <div class="col-md-3">
+        <SideProfile />
+      </div>
+      <div class="col-md-6">
+        <router-view />
+      </div>
+      <div class="col-md-3"></div>
+    </div>
   </main>
   <footer>
-    <div class="bg-dark text-light text-center p-4">
-      Made with 💖 by CodeWorks
+    <div class="bg-info text-dark text-center p-4">
+      Made by M Bickish
     </div>
   </footer>
 </template>
