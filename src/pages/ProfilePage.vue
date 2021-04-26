@@ -2,7 +2,7 @@
   <div class="home container flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <div class="row">
       <div class="col-md-12">
-        Hello!
+        This is the profile page that has not yet come to pass.
       </div>
     </div>
   </div>

@@ -1,16 +1,21 @@
 <template>
-  <div class="side-profile">
+  <div class="side-profile p-3">
     <div class="mt-5">
-      <span class="login-toggle">
-        <router-link :to="{ name: 'ProfilePage', params: {id: state.account.id}}">
-          <img v-if="state.user.isAuthenticated"
-               :src="user.picture"
-               alt="user photo"
+      <router-link :to="{ name: 'ProfilePage', params: {id: state.account.id}}">
+        <img v-if="state.user.isAuthenticated"
+             :src="user.picture"
+             alt="user photo"
 
-               class="rounded-circle user-photo"
-          /></router-link>
-        <p class="font-weight-bold text-center">{{ user.name }}</p>
-        <p class="font-weight-lighter">{{ user.class }}</p>
+             class="rounded-circle user-photo"
+        />
+      </router-link>
+      <p class="font-weight-bold mb-0">
+        {{ user.name }}
+      </p>
+      <p class="font-weight-light">
+        {{ user.class }}
+      </p>
+      <div class="mt-2">
         <button
           class="btn btn-outline-info text-uppercase"
           @click="login"
@@ -19,33 +24,14 @@
           Login
         </button>
 
-        <div class="dropdown" v-else>
-          <div
-            class="dropdown-toggle"
-            @click="state.dropOpen = !state.dropOpen"
+        <div v-else>
+          <button class="btn btn-outline-info text-uppercase"
+                  @click="logout"
           >
-
-            <span class="mx-3 text-black-50">options</span>
-          </div>
-          <div
-            class="dropdown-menu p-0 list-group w-100"
-            :class="{ show: state.dropOpen }"
-            @click="state.dropOpen = false"
-          >
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item list-group-item-action hoverable">
-                Account
-              </div>
-            </router-link>
-            <div
-              class="list-group-item list-group-item-action hoverable"
-              @click="logout"
-            >
-              logout
-            </div>
-          </div>
+            logout
+          </button>
         </div>
-      </span>
+      </div>
     </div>
   </div>
 </template>
