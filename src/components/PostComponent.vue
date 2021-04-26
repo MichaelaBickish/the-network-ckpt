@@ -11,11 +11,11 @@
         </div>
         <div class="row">
           <div class="col-3">
-            <router-link :to="{ name: 'Account', params: {id: post.creator.id} }">
-              <div>
+            <div>
+              <router-link :to="{ name: 'ProfilePage', params: {id: post.creator.id}}">
                 <img :src="post.creator.picture" alt="Creator Image" class="rounded-circle post-profile-photo">
-              </div>
-            </router-link>
+              </router-link>
+            </div>
           </div>
           <div class="col-9 pl-0">
             <p class="text-left mb-0">

@@ -1,16 +1,14 @@
 <template>
   <div class="side-profile">
-    <p>yay side profile!</p>
-    <!-- <img :src="account.picture" alt="" class="rounded-circle"> -->
-    <img src="//placehold.it/100x100" alt="">
     <div class="mt-5">
       <span class="login-toggle">
-        <img
-          :src="user.picture"
-          alt="user photo"
+        <router-link :to="{ name: 'ProfilePage', params: {id: state.account.id}}">
+          <img v-if="state.user.isAuthenticated"
+               :src="user.picture"
+               alt="user photo"
 
-          class="rounded-circle user-photo"
-        />
+               class="rounded-circle user-photo"
+          /></router-link>
         <p class="font-weight-bold text-center">{{ user.name }}</p>
         <p class="font-weight-lighter">{{ user.class }}</p>
         <button

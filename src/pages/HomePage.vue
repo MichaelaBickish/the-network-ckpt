@@ -1,12 +1,9 @@
 <template>
   <div class="home container flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-12">
         <PostComponent v-for="post in state.posts" :key="post.id" :post="post" />
         <OlderNewer />
-      </div>
-      <div class="col-md-3">
-        <Feature v-for="feature in state.features" :key="feature.tall" :feature="feature" />
       </div>
     </div>
   </div>
@@ -17,19 +14,19 @@ import { reactive, computed, onMounted } from 'vue'
 import Notification from '../utils/Notification'
 import { postsService } from '../services/PostsService'
 import { AppState } from '../AppState'
-import { featuresService } from '../services/FeaturesService'
+// import { featuresService } from '../services/FeaturesService'
 export default {
 
   name: 'Home',
   setup() {
     const state = reactive({
-      posts: computed(() => AppState.posts),
-      features: computed(() => AppState.features)
+      posts: computed(() => AppState.posts)
+      // features: computed(() => AppState.features)
     })
     onMounted(async() => {
       try {
         await postsService.getAll()
-        await featuresService.getAll()
+        // await featuresService.getAll()
       } catch (error) {
         Notification.toast('Error: ' + error, 'error')
       }
