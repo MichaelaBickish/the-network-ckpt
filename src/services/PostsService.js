@@ -19,6 +19,12 @@ class PostsService {
     AppState.newer = res.data.newer
     AppState.older = res.data.older
   }
+
+  async createPost(body) {
+    const res = await api.post('api/posts', body)
+    AppState.posts = [...AppState.posts, res.data]
+    console.log(res.data)
+  }
 }
 
 export const postsService = new PostsService()

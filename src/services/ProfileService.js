@@ -11,7 +11,6 @@ class ProfileService {
   async getProfilePosts(id) {
     const res = await api.get(`api/profiles/${id}/posts`)
     AppState.profilePosts = res.data.posts
-    console.log(AppState.profilePosts)
   }
 }
 

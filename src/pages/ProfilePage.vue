@@ -41,10 +41,9 @@
               </button>
             </form>
           </div>
-
-          <PostComponent v-for="post in state.posts" :key="post.id" :post="post" />
-          <OlderNewer />
         </div>
+        <PostComponent v-for="post in state.posts" :key="post.id" :post="post" />
+        <OlderNewer />
       </div>
     </div>
   </div>
