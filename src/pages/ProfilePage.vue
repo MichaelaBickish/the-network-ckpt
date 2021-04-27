@@ -7,15 +7,16 @@
         <p class="text-muted">
           {{ state.activeProfile.class || 'Spring 2021' }}
         </p>
+        <hr>
+        <PostComponent v-for="post in state.posts" :key="post.id" :post="post" />
+        <OlderNewer />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { computed, onMounted, reactive } from 'vue'
-// import { logger } from '../utils/Logger'
-// import { profileService } from '../services/ProfileService'
+import { computed, reactive, watchEffect } from 'vue'
 import { postsService } from '../services/PostsService'
 import { AppState } from '../AppState'
 import { useRoute } from 'vue-router'
@@ -32,12 +33,12 @@ export default {
       account: computed(() => AppState.account),
       user: computed(() => AppState.user)
     })
-    // If I change the onMounted in this specific instance to watchEffect
-    onMounted(async() => {
+    //  watchEffect
+    watchEffect(async() => {
       try {
         await accountService.getProfile(route.params.id)
         await profileService.getActiveProfile(route.params.id)
-        // await profileService.getProfilePosts(route.params.id)
+        await profileService.getProfilePosts(route.params.id)
       } catch (error) {
         Notification.toast('Error:' + error, 'error')
       }

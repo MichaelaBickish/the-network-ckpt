@@ -7,6 +7,7 @@ export const AppState = reactive({
   account: {},
   // account is api profile
   posts: [],
+  profilePosts: null,
   activeProfile: null,
   newer: null,
   older: null,
