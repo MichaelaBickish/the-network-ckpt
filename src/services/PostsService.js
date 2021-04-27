@@ -25,6 +25,11 @@ class PostsService {
     AppState.posts = [...AppState.posts, res.data]
     console.log(res.data)
   }
+
+  async deletePost(id) {
+    await api.delete('api/posts/' + id)
+    AppState.posts = AppState.posts.filter(post => post.id !== id)
+  }
 }
 
 export const postsService = new PostsService()

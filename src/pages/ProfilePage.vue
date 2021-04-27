@@ -13,12 +13,12 @@
           <hr>
         </div>
 
-        <div class="ProfilePage card shadow">
+        <div class="ProfilePage card shadow" v-if="state.user.isAuthenticated && state.account.id === route.params.id">
           <p class="font-weight-bold mb-0 text-info">
             New Post
           </p>
           <div class="card-body p-2">
-            <form @submit.prevent="createPost" v-if="state.user.isAuthenticated && state.account.id === route.params.id">
+            <form @submit.prevent="createPost">
               <div class="form-group">
                 <input type="text"
                        class="form-control mb-1"

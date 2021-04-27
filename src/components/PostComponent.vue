@@ -6,7 +6,7 @@
       <div class="card-body p-3">
         <div class="row">
           <div class="col-12 d-flex justify-content-end text-danger">
-            <i class="fas fa-times"></i>
+            <i class="fas fa-times" v-if="state.account && state.account.id == post.creatorId" @click="deletePost(post)"></i>
           </div>
         </div>
         <div class="row">
@@ -50,7 +50,9 @@
 <script>
 
 import { postsService } from '../services/PostsService'
+import { computed, reactive } from 'vue'
 import Notification from '../utils/Notification'
+import { AppState } from '../AppState'
 export default {
   name: 'PostComponent',
   props: {
@@ -59,13 +61,26 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
+    const state = reactive({
+      account: computed(() => AppState.account)
+    })
     return {
+      state,
       async likePost(post) {
         try {
           await postsService.likePost(post.id)
         } catch (error) {
           Notification.toast('Error: ' + error, 'error')
+        }
+      },
+      async deletePost() {
+        try {
+          await postsService.deletePost(props.post.id)
+          // console.log('im trying to delete')
+          Notification.toast('Deleted', 'success')
+        } catch (error) {
+          Notification.toast('Error: ' + error, ' error')
         }
       }
     }
