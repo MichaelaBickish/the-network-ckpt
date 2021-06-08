@@ -36,7 +36,7 @@
             </p>
             <img :src="post.imgUrl" alt="" class="post-photo mb-1">
             <p class="text-right mb-0 text-info">
-              <button type="button" class="btn btn-outline-info" @click="likePost(post)">
+              <button type="button" class="btn btn-outline-info" @click="likePost(post)" v-if="state.user.isAuthenticated">
                 <i class="far fa-thumbs-up mr-1"></i> {{ post.likes.length }}
               </button>
             </p>
@@ -63,7 +63,8 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      user: computed(() => AppState.user)
     })
     return {
       state,
